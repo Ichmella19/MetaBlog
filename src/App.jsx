@@ -1,14 +1,19 @@
-
-
-
-function App() {
- 
-
-  return (
-    <div>
-      <p>elcy</p>
-    </div>
-  )
-}
-
-export default App
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+import Layout from "./Layouts/Layout";
+import Home from "./Composants/Home";
+const App = () => {
+    return (
+      <Router> 
+        
+        <Routes>
+          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          </Route>
+          
+        </Routes>
+      </Router>
+    );
+  };
+  
+  export default App;
+  
