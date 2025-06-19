@@ -1,18 +1,16 @@
-import React from 'react'
-import Header from './Header'
-// import Footer from './Footer'
-import { Outlet } from 'react-router-dom'
+import Header from "../Layouts/Header";
+import Footer from "../Layouts/Footer";
+import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+const Layout = ({ theme, setTheme }) => {
   return (
-    <div>
-      <Header />
+    <>
+      <Header theme={theme} setTheme={setTheme} /> {/* ✅ TRANSMIS ici */}
+      <Outlet />
+        <Footer theme={theme} setTheme={setTheme} /> {/* ✅ TRANSMIS ici */}
+    </>
 
-      <div><Outlet /></div>
+  );
+};
 
-     {/* <Footer /> */}
-    </div>
-  )
-}
-
-export default Layout
+export default Layout;

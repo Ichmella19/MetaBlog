@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Search, Sun, Moon, Menu, X } from "lucide-react";
 import LogoClair from "../assets/Images/LogoClair.png";
 import LogoNight from "../assets/Images/LogoNight.png";
 
-const Header = () => {
+const Header = ({ theme, setTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem('theme', theme);
-  }, [theme]);
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
@@ -20,7 +14,7 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className={`w-full ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'} py-4  fixed top-0 left-0 z-50 font-worksans`}>
+    <header className={`w-full ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'} py-4 fixed top-0 left-0 z-50 font-worksans`}>
       <div className="w-full mx-auto flex items-center justify-between px-4 md:px-8 lg:px-[150px]">
 
         {/* Logo dynamique selon le thème */}
@@ -34,63 +28,30 @@ const Header = () => {
         <nav className="hidden lg:flex ml-[10%]">
           <ul className="flex flex-row gap-2 font-medium text-[16px] items-center whitespace-nowrap">
             <li className="relative cursor-pointer ">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "" : "px-5"
-                }
-              >
-                Home
-              </NavLink>
+              <NavLink to="/" className={({ isActive }) => (isActive ? "" : "px-5")}>Home</NavLink>
             </li>
             <li className="relative cursor-pointer ">
-              <NavLink
-                to="/About"
-                className={({ isActive }) =>
-                  isActive ? "" : "px-5"
-                }
-              >
-                Blog
-              </NavLink>
+              <NavLink to="/Blog" className={({ isActive }) => (isActive ? "" : "px-5")}>Blog</NavLink>
             </li>
             <li className="relative cursor-pointer ">
-              <NavLink
-                to="/portfolio"
-                className={({ isActive }) =>
-                  isActive ? "" : "px-5"
-                }
-              >
-                Single Post
-              </NavLink>
+              <NavLink to="/portfolio" className={({ isActive }) => (isActive ? "" : "px-5")}>Single Post</NavLink>
             </li>
             <li className="relative cursor-pointer ">
-              <NavLink
-                to="/portfolio"
-                className={({ isActive }) =>
-                  isActive ? "" : "px-5"
-                }
-              >
-                Pages
-              </NavLink>
+              <NavLink to="/portfolio" className={({ isActive }) => (isActive ? "" : "px-5")}>Pages</NavLink>
             </li>
             <li className="relative cursor-pointer ">
-              <NavLink
-                to="/Contact"
-                className={({ isActive }) =>
-                  isActive ? "" : "px-5"
-                }
-              >
-                Contact
-              </NavLink>
+              <NavLink to="/Contact" className={({ isActive }) => (isActive ? "" : "px-5")}>Contact</NavLink>
             </li>
-           <div
-  className={`hidden lg:flex justify-between items-center px-4 py-2 rounded-[7px] min-w-[200px] md:ml-[10%] ${
-    theme === 'light' ? 'bg-[#F4F4F5] text-[#A1A1AA]' : 'bg-[#242535] text-[#A1A1AA]'
-  }`}
->
-  <span className="text-[16px]">Search</span>
-  <Search className={`w-5 h-5 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
-</div>
+
+            {/* Barre de recherche */}
+            <div
+              className={`hidden lg:flex justify-between items-center px-4 py-2 rounded-[7px] min-w-[200px] md:ml-[10%] ${
+                theme === 'light' ? 'bg-[#F4F4F5] text-[#A1A1AA]' : 'bg-[#242535] text-[#A1A1AA]'
+              }`}
+            >
+              <span className="text-[16px]">Search</span>
+              <Search className={`w-5 h-5 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
+            </div>
           </ul>
         </nav>
 
@@ -107,7 +68,7 @@ const Header = () => {
           )}
         </button>
 
-        {/* Mobile menu & theme toggle */}
+        {/* Mobile menu & toggle theme */}
         <div className="lg:hidden flex items-center">
           <button
             onClick={toggleTheme}
@@ -121,7 +82,7 @@ const Header = () => {
             )}
           </button>
 
-          <button onClick={toggleMenu} className="text-[#333] dark:text-white">
+          <button onClick={toggleMenu} className="light:text-gray-800 dark:text-white">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -131,23 +92,25 @@ const Header = () => {
       <div
         className={`lg:hidden fixed top-[64px] left-0 w-full z-40 px-6 py-6 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}
+        } ${theme === 'light' ? 'bg-gray-800' : 'bg-gray-800'}`}
       >
-        <ul className="flex flex-col gap-6 text-[16px] font-medium">
-          <li className="text-[#3252DF]">
+        <ul className={`flex flex-col font-medium text-[16px] gap-6 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } ${theme === 'light' ? ' text-black' : ' text-white'}`}>
+          <li className="text-white">
             <Link to="/" onClick={toggleMenu}>Home</Link>
           </li>
-          <li className="text-[#152C5B]">
-            <Link to="/About" onClick={toggleMenu}>Hotels</Link>
+          <li className="text-white">
+            <Link to="/Blog" onClick={toggleMenu}>Blog</Link>
           </li>
-          <li className="text-[#152C5B]">
-            <Link to="/Portfolio" onClick={toggleMenu}>Rooms</Link>
+          <li className="text-white">
+            <Link to="/Portfolio" onClick={toggleMenu}>Single Posts</Link>
           </li>
-          <li className="text-[#152C5B]">
-            <Link to="/Portfolio" onClick={toggleMenu}>About</Link>
+          <li className="text-white">
+            <Link to="/Portfolio" onClick={toggleMenu}>Pages</Link>
           </li>
-          <li className="text-[#152C5B]">
-            <Link to="/Contact" onClick={toggleMenu}>Contact Me</Link>
+          <li className="text-white">
+            <Link to="/Contact" onClick={toggleMenu}>Contact</Link>
           </li>
         </ul>
       </div>
