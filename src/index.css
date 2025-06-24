@@ -10,4 +10,11 @@ body.dark {
   background-color: #000000;
   color: #ffffff;
 }
+.sourceSerif {
+  font-family: 'Source Serif Pro', serif;
+}
+.italic {
+  font-style: italic;
+}
+
 

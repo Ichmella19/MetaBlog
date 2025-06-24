@@ -21,6 +21,8 @@ import { useState, useEffect } from "react";
 import Layout from "./Layouts/Layout";
 import Home from "./Composants/Home";
 import Blog from "./Composants/Blog";
+import SinglePost from "./Composants/SinglePost";
+import Page from "./Composants/Page";
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -38,6 +40,8 @@ const App = () => {
         >
           <Route path="/" element={<Home theme={theme} />} />
         <Route path="/Blog" element={<Blog theme={theme} />} />
+          <Route path="/SinglePost" element={<SinglePost theme={theme} />} />
+          <Route path="/Page" element={<Page theme={theme} />} />
         </Route>
       </Routes>
     </Router>

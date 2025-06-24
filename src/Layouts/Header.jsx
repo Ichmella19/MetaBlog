@@ -34,10 +34,10 @@ const Header = ({ theme, setTheme }) => {
               <NavLink to="/Blog" className={({ isActive }) => (isActive ? "" : "px-5")}>Blog</NavLink>
             </li>
             <li className="relative cursor-pointer ">
-              <NavLink to="/portfolio" className={({ isActive }) => (isActive ? "" : "px-5")}>Single Post</NavLink>
+              <NavLink to="/singlepost" className={({ isActive }) => (isActive ? "" : "px-5")}>Single Post</NavLink>
             </li>
             <li className="relative cursor-pointer ">
-              <NavLink to="/portfolio" className={({ isActive }) => (isActive ? "" : "px-5")}>Pages</NavLink>
+              <NavLink to="/page" className={({ isActive }) => (isActive ? "" : "px-5")}>Pages</NavLink>
             </li>
             <li className="relative cursor-pointer ">
               <NavLink to="/Contact" className={({ isActive }) => (isActive ? "" : "px-5")}>Contact</NavLink>
@@ -104,10 +104,11 @@ const Header = ({ theme, setTheme }) => {
             <Link to="/Blog" onClick={toggleMenu}>Blog</Link>
           </li>
           <li className="text-white">
-            <Link to="/Portfolio" onClick={toggleMenu}>Single Posts</Link>
+            <Link to="/singlepost" onClick={toggleMenu}>Single Posts</Link>
           </li>
+          
           <li className="text-white">
-            <Link to="/Portfolio" onClick={toggleMenu}>Pages</Link>
+            <Link to="/page" onClick={toggleMenu}>Pages</Link>
           </li>
           <li className="text-white">
             <Link to="/Contact" onClick={toggleMenu}>Contact</Link>
