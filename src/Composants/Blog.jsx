@@ -115,43 +115,47 @@ const Blog =({ theme }) => {
                     </div>
             </div>
       </section>
-       <section className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {blogPosts.map((post) => (
-              <div
-                key={post.id}
-                className={`border-[1px] border-gray-200 flex flex-col p-4 sm:p-6 text-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${
-                  theme === "light"
-                    ? "bg-white border-black"
-                    : "bg-[#1f1f1f] border-gray-700"
-                }`}
-              >
-                <img
-                  src={post.imageUrl}
-                  alt={post.title}
-                  className="w-full h-48 object-cover mb-4 rounded-[12px]"
-                />
-                <button className="self-start bg-[#4B6BFB0D] hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-md text-sm mb-3 transition-colors">
-                  <p className="text-[14px] text-[#4B6BFB]">Technology</p>
-                </button>
-                <h3 className="font-semibold md:text-[24px] mb-4 min-w-[310px] text-inherit ">
-                  {post.title}
-                </h3>
-                <div className="flex items-center gap-3 mt-auto">
-                  <img
-                    src={post.avatarUrl}
-                    alt={post.author}
-                    className="rounded-full w-10 h-10 object-cover flex-shrink-0"
-                  />
-                  <div className="flex gap-x-5 flex-wrap">
-                    <p className="text-gray-400 font-medium truncate">{post.author}</p>
-                    <p className="text-gray-500 text-sm truncate">{post.date}</p>
-                  </div>
-                </div>
+     {/* POSTS */}
+  <section className="py-8 md:py-10">
+    <p className="text-start font-bold text-[22px] sm:text-[24px] mb-6">Latest Post</p>
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {blogPosts.map((post) => (
+          <div
+            key={post.id}
+            className={`border-[1px] flex flex-col p-4 sm:p-6 text-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${
+              theme === "light"
+                ? "bg-white border-black"
+                : "bg-[#1f1f1f] border-gray-700"
+            }`}
+          >
+            <img
+              src={post.imageUrl}
+              alt={post.title}
+              className="w-full h-48 object-cover mb-4 rounded-[12px]"
+            />
+            <button className="self-start bg-[#4B6BFB0D] hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-md text-sm mb-3 transition-colors">
+              <p className="text-[14px] text-[#4B6BFB]">Technology</p>
+            </button>
+            <h3 className="font-semibold text-[18px] sm:text-[20px] md:text-[24px] mb-4 text-inherit min-h-[72px]">
+              {post.title}
+            </h3>
+            <div className="flex items-center gap-3 mt-auto">
+              <img
+                src={post.avatarUrl}
+                alt={post.author}
+                className="rounded-full w-10 h-10 object-cover flex-shrink-0"
+              />
+              <div className="flex gap-x-5 flex-wrap">
+                <p className="text-gray-400 font-medium truncate">{post.author}</p>
+                <p className="text-gray-500 text-sm truncate">{post.date}</p>
               </div>
-            ))}
+            </div>
           </div>
-        </section>
+        ))}
+      </div>
+    </div>
+  </section>
           <section
         className={`mx-auto w-full max-w-[750px] flex flex-col justify-center items-center rounded-[12px] py-3 mt-[60%] md:mt-0 ${
           theme === "light"

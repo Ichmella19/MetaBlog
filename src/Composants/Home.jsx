@@ -92,103 +92,104 @@ const blogPosts = [
 
 const Home = ({ theme }) => {
   return (
-    <main
-      className={`w-full h-full mt-[40px] min-h-screen overflow-hidden font-worksans px-4 md:px-[30px] lg:px-[100px] ${
-        theme === "light" ? "bg-white text-black" : "bg-black text-white"
+  <main
+  className={`w-full h-full mt-10 min-h-screen overflow-hidden font-worksans px-4 md:px-6 lg:px-[100px] ${
+    theme === "light" ? "bg-white text-black" : "bg-black text-white"
+  }`}
+>
+  {/* HERO */}
+  <section className="flex flex-col lg:flex-row py-8 md:py-12 lg:py-[100px] relative w-full mb-[150px]">
+    <div className="relative w-full">
+      <img src={Image1} alt="" className="w-full h-auto object-cover" />
+    </div>
+    <div
+      className={`absolute top-[60%] left-[5%] shadow-lg flex flex-col p-4 sm:p-6 md:p-8 gap-y-4 rounded-[12px] justify-center items-start w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] ${
+        theme === "light" ? "bg-white text-black" : "bg-[#1e1e1e] text-white"
       }`}
     >
-      {/* HERO */}
-      <section className="flex flex-col lg:flex-row py-[30px] md:py-[50px] lg:py-[100px] relative w-full mb-[150px]">
-        <div className="relative w-full">
-          <img src={Image1} alt="" className="w-full h-auto object-cover" />
-        </div>
-        <div
-          className={`absolute top-[60%] left-[5%] shadow-lg flex flex-col p-4 sm:p-6 md:p-8 gap-y-4 rounded-[12px] justify-center items-start w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] ${
-            theme === "light" ? "bg-white text-black" : "bg-[#1e1e1e] text-white"
-          }`}
-        >
-          <button className="bg-[#4B6BFB] px-3 py-2 rounded-[6px] text-white text-[14px]">
-            Technology
-          </button>
-          <p className="text-[20px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-semibold ">
-            The Impact of Technology on the Workplace: How Technology is Changing
-          </p>
-          <div className="flex flex-wrap gap-x-4 items-center">
-            <img src={Image2} alt="" className="rounded-full w-8 h-8" />
-            <p className="text-[#97989F] text-[14px] sm:text-[16px]">Jason Francisco</p>
-            <p className="text-[#97989F] text-[14px] sm:text-[16px]">August 20, 2022</p>
-          </div>
-        </div>
-      </section>
+      <button className="bg-[#4B6BFB] px-3 py-2 rounded-[6px] text-white text-[14px]">
+        Technology
+      </button>
+      <p className="text-[20px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-semibold leading-snug sm:leading-snug">
+        The Impact of Technology on the Workplace: How Technology is Changing
+      </p>
+      <div className="flex flex-wrap gap-x-4 items-center">
+        <img src={Image2} alt="" className="rounded-full w-8 h-8" />
+        <p className="text-[#97989F] text-[14px] sm:text-[16px]">Jason Francisco</p>
+        <p className="text-[#97989F] text-[14px] sm:text-[16px]">August 20, 2022</p>
+      </div>
+    </div>
+  </section>
 
-      {/* ADVERTISEMENT */}
-      <section
-        className={`mx-auto w-full max-w-[750px] flex flex-col justify-center items-center rounded-[12px] py-3 mt-[60%] md:mt-0 ${
-          theme === "light"
-            ? "bg-[#E8E8EA] text-[#696A75]"
-            : "bg-[#2a2a2a] text-[#d1d1d1]"
-        }`}
-      >
-        <p className="text-[14px]">Advertisement</p>
-        <p className="text-[20px] font-semibold">You can place ads</p>
-        <p className="text-[18px]">750x100</p>
-      </section>
+  {/* ADVERTISEMENT */}
+  <section
+    className={`mx-auto w-full max-w-[750px] flex flex-col justify-center items-center rounded-[12px] py-3 mt-[80%] md:mt-0 ${
+      theme === "light"
+        ? "bg-[#E8E8EA] text-[#696A75]"
+        : "bg-[#2a2a2a] text-[#d1d1d1]"
+    }`}
+  >
+    <p className="text-[14px]">Advertisement</p>
+    <p className="text-[18px] sm:text-[20px] font-semibold">You can place ads</p>
+    <p className="text-[16px] sm:text-[18px]">750x100</p>
+  </section>
 
-      {/* POSTS */}
-      <section className="py-[30px]">
-        <p className="text-start font-bold text-[24px]">Latest Post</p>
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {blogPosts.map((post) => (
-              <div
-                key={post.id}
-                className={`border-[1px] border-gray-200 flex flex-col p-4 sm:p-6 text-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${
-                  theme === "light"
-                    ? "bg-white border-black"
-                    : "bg-[#1f1f1f] border-gray-700"
-                }`}
-              >
-                <img
-                  src={post.imageUrl}
-                  alt={post.title}
-                  className="w-full h-48 object-cover mb-4 rounded-[12px]"
-                />
-                <button className="self-start bg-[#4B6BFB0D] hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-md text-sm mb-3 transition-colors">
-                  <p className="text-[14px] text-[#4B6BFB]">Technology</p>
-                </button>
-                <h3 className="font-semibold md:text-[24px] mb-4 min-w-[310px] text-inherit ">
-                  {post.title}
-                </h3>
-                <div className="flex items-center gap-3 mt-auto">
-                  <img
-                    src={post.avatarUrl}
-                    alt={post.author}
-                    className="rounded-full w-10 h-10 object-cover flex-shrink-0"
-                  />
-                  <div className="flex gap-x-5 flex-wrap">
-                    <p className="text-gray-400 font-medium truncate">{post.author}</p>
-                    <p className="text-gray-500 text-sm truncate">{post.date}</p>
-                  </div>
-                </div>
+  {/* POSTS */}
+  <section className="py-8 md:py-10">
+    <p className="text-start font-bold text-[22px] sm:text-[24px] mb-6">Latest Post</p>
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {blogPosts.map((post) => (
+          <div
+            key={post.id}
+            className={`border-[1px] flex flex-col p-4 sm:p-6 text-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${
+              theme === "light"
+                ? "bg-white border-black"
+                : "bg-[#1f1f1f] border-gray-700"
+            }`}
+          >
+            <img
+              src={post.imageUrl}
+              alt={post.title}
+              className="w-full h-48 object-cover mb-4 rounded-[12px]"
+            />
+            <button className="self-start bg-[#4B6BFB0D] hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-md text-sm mb-3 transition-colors">
+              <p className="text-[14px] text-[#4B6BFB]">Technology</p>
+            </button>
+            <h3 className="font-semibold text-[18px] sm:text-[20px] md:text-[24px] mb-4 text-inherit min-h-[72px]">
+              {post.title}
+            </h3>
+            <div className="flex items-center gap-3 mt-auto">
+              <img
+                src={post.avatarUrl}
+                alt={post.author}
+                className="rounded-full w-10 h-10 object-cover flex-shrink-0"
+              />
+              <div className="flex gap-x-5 flex-wrap">
+                <p className="text-gray-400 font-medium truncate">{post.author}</p>
+                <p className="text-gray-500 text-sm truncate">{post.date}</p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      {/* ADVERTISEMENT DUPLICATE */}
-      <section
-        className={`mx-auto w-full max-w-[750px] flex flex-col justify-center items-center rounded-[12px] py-3 ${
-          theme === "light"
-            ? "bg-[#E8E8EA] text-[#696A75]"
-            : "bg-[#2a2a2a] text-[#d1d1d1]"
-        }`}
-      >
-        <p className="text-[14px]">Advertisement</p>
-        <p className="text-[20px] font-semibold">You can place ads</p>
-        <p className="text-[18px]">750x100</p>
-      </section>
-    </main>
+  {/* ADVERTISEMENT DUPLICATE */}
+  <section
+    className={`mx-auto w-full max-w-[750px] flex flex-col justify-center items-center rounded-[12px] py-3 ${
+      theme === "light"
+        ? "bg-[#E8E8EA] text-[#696A75]"
+        : "bg-[#2a2a2a] text-[#d1d1d1]"
+    }`}
+  >
+    <p className="text-[14px]">Advertisement</p>
+    <p className="text-[18px] sm:text-[20px] font-semibold">You can place ads</p>
+    <p className="text-[16px] sm:text-[18px]">750x100</p>
+  </section>
+</main>
+
   );
 };
 
